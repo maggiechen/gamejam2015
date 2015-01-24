@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 1;
 
     // TODO-BL Will change so we only change the jump magnitude in one place
-    public float jumpMagnitude = 100;
+    public float jumpMagnitude = 1000;
     private bool canJump;
 	// Use this for initialization
 	void Start () {
@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour {
 	// called at fixed time intervals
 	void FixedUpdate() {
 		//Rigidbody rigidbody = new Rigidbody ();
-		float moveHorizontal = 10 * Input.GetAxis ("Horizontal");
-        float moveVertical = 10 * Input.GetAxis("Vertical");
+		float moveHorizontal = 1000 * Input.GetAxis ("Horizontal");
+        float moveVertical = 1000 * Input.GetAxis("Vertical");
         float jumpForce;
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
