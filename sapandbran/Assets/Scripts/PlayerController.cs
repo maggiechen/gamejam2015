@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour {
         float moveVertical = 10 * Input.GetAxis("Vertical");
         float jumpForce;
 
-        jumpForce = (Input.GetKeyDown(KeyCode.Space) && canJump) ? 100 : 0;
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             jumpForce = 100;
