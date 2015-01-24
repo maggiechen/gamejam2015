@@ -1,1 +1,9 @@
-This is the group for Game Jam 2015. Please use Markdown to prettify this.
+#Team Something
+##Members:
+1. Wilfred Wee
+2. Connor O'Brien
+3. Oliver Zhang
+4. William Yao
+5. Patterson Wu
+6. Maggie Chen
+7. Brandon Lim
