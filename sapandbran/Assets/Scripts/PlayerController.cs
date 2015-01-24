@@ -4,8 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 	public float speed = 1;
 
-    // TODO-BL Will change so we only change the jump magnitude in one place
-    public float jumpMagnitude = 1000;
+    public float jumpMagnitude = 100;
     private bool canJump;
 	// Use this for initialization
 	void Start () {
@@ -14,7 +13,11 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (isOutsideGameBoundaries())
+        {
+            // TODO the death trigger or whatever here
+            Debug.Log("The player is outside game boundaries");
+        }
 	}
 
 	// called at fixed time intervals
@@ -25,7 +28,7 @@ public class PlayerController : MonoBehaviour {
         float jumpForce;
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
-        {
+        {   
             jumpForce = 100;
             canJump = false;
         }
@@ -57,4 +60,13 @@ public class PlayerController : MonoBehaviour {
             canJump = false;
         }
     }
+
+    bool isOutsideGameBoundaries()
+    {
+		Vector3 position = transform.position;
+		int limit = 500;
+		return !((position.x > -limit && position.x < limit) &&
+			(position.y > -limit && position.y < limit) &&
+			(position.z > -limit && position.z < limit));
+	}
 }
