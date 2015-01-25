@@ -5,12 +5,16 @@ public class GravityChanger : MonoBehaviour {
 	public bool goThroughFloor;
 	public GameObject currentPlatform;
 	//public Vector3 moveDirection;
-
+	public GameObject player;
 	//private bool isMovingBack = false;
-	//private Vector3 originalPosition;
+	private Vector3 originalPosition;
+	public GameObject camera;
+	private CameraController cameraController;
+
 	// Use this for initialization
 	void Start () {
-		//originalPosition = currentPlatform.transform.position;
+		cameraController = GameObject.Find ("Main Camera").GetComponent<CameraController> ();
+		originalPosition = currentPlatform.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -37,6 +41,8 @@ public class GravityChanger : MonoBehaviour {
 			} else {
 				changeGravity(other);
 			}
+			rotatePlayer();
+			cameraController.antiGravityOn();
 		}
 	}
 
@@ -48,7 +54,7 @@ public class GravityChanger : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 		if (goThroughFloor && other.gameObject != currentPlatform) {
-			Debug.Log ("Exited");
+			//Debug.Log ("Exited");
 			changeGravity (other);
 			currentPlatform.SetActive(true);
 			//isMovingBack = true;
@@ -57,5 +63,8 @@ public class GravityChanger : MonoBehaviour {
 
 	void changeGravity(Collider other) {
 		other.gameObject.GetComponent<Gravity>().fallDirection = other.gameObject.GetComponent<Gravity>().fallDirection * -1;
+	}
+	void rotatePlayer(){
+		player.transform.RotateAround (transform.position, transform.right, 180f);
 	}
 }
