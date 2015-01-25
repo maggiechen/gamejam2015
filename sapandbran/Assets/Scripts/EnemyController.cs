@@ -10,7 +10,6 @@ public class EnemyController : MonoBehaviour {
 
 	// Use this for initialization
 	IEnumerator Start () {
-		gameObject.renderer.material.color = Color.red;
 		Vector3 pointA = transform.position;
 		Vector3 pointB = pointA + new Vector3 (offsetX, offsetY, offsetZ);
 		while (true) {
@@ -33,7 +32,7 @@ public class EnemyController : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			GameController.EndGame();
+			GameController.GameOver();
 		}
 	}
 }

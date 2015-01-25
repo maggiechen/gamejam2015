@@ -9,7 +9,8 @@ public class CameraController : MonoBehaviour {
 	Vector3 offset;
 	// Use this for initialization
 	void Start () {
-		translationOffset = new Vector3 (0.0f, 1.5f, -3f);
+		translationOffset = new Vector3 (0.0f, 1.5f, -3.5f);
+		transform.rotation = Quaternion.AngleAxis (20, Vector3.right);
 		rotationOffset = transform.transform.rotation;
 	}
 	
