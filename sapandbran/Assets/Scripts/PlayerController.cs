@@ -11,12 +11,8 @@ public class PlayerController : MonoBehaviour {
 	private float jumpMagnitude = 150;
 	private int friction = 3;
     private float distToGround;
-	private float fallHeightDeath = 8.0f;
     private bool isAntiGravityOn = false;
     private int reverseDirection = 1;
-
-    //private float deltaDY = 0.0f;
-    private double FALL_CONSTANT = -0.06147593;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +21,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (Mathf.Abs(rigidbody.velocity.y) > maxSpeedY) {
+			GameController.GameOver ();
+		}
 	}
 
 	// called at fixed time intervals
@@ -51,7 +49,6 @@ public class PlayerController : MonoBehaviour {
 		Vector3 movement = VectorMovement (moveAxisX, moveAxisZ);
 		rigidbody.AddForce (movement * speed * Time.deltaTime);
         rigidbody.AddForce (jumpMovement * jumpMagnitude * Time.deltaTime);
-		death ();
 	}
 
 	Vector3 VectorMovement(float moveAxisX, float moveAxisZ){
@@ -77,10 +74,5 @@ public class PlayerController : MonoBehaviour {
     }
 	public void rotatePlayer(){
 		transform.RotateAround (transform.position, transform.right, 180f);
-	}
-	void death(){
-		if (Mathf.Abs (transform.position.y) > fallHeightDeath) {
-			GameController.GameOver();
-		}
 	}
 }
