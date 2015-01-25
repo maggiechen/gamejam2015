@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Hover : MonoBehaviour {
-	float index = 0f;
+	public float index;
 	// Use this for initialization
 	void Start () {
 	
