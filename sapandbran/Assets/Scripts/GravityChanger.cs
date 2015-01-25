@@ -10,10 +10,12 @@ public class GravityChanger : MonoBehaviour {
 	private Vector3 originalPosition;
 	public GameObject camera;
 	private CameraController cameraController;
+	private PlayerController playerController;
 
 	// Use this for initialization
 	void Start () {
 		cameraController = GameObject.Find ("Main Camera").GetComponent<CameraController> ();
+		playerController = GameObject.Find ("Player").GetComponent<PlayerController> ();
 		originalPosition = currentPlatform.transform.position;
 	}
 	
@@ -43,6 +45,8 @@ public class GravityChanger : MonoBehaviour {
 			}
 			rotatePlayer();
 			cameraController.antiGravityOn();
+			playerController.antiGravityOn();
+
 		}
 	}
 

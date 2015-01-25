@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     // TODO-BL Will change so we only change the jump magnitude in one place
     public float jumpMagnitude = 1000;
     private float distToGround;
+	private bool isAntiGravityOn = false;
 	// Use this for initialization
 	void Start () {
         distToGround = collider.bounds.extents.y;
@@ -30,7 +31,11 @@ public class PlayerController : MonoBehaviour {
 		Vector3 jumpMovement = new Vector3(0.0f, 0.0f, 0.0f);
         if (Input.GetKeyDown(KeyCode.Space) && IsTouchingGround())
         {
-			jumpForce = 100;
+			if (isAntiGravityOn){
+				jumpForce = -100f;
+			}else{
+				jumpForce = 100;
+			}
 		}
 		jumpMovement.Set(0.0f, jumpForce, 0.0f);
 		Vector3 movement = VectorMovement (moveAxisX, moveAxisZ);
@@ -45,10 +50,19 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log (test.x);
 		return moveX + moveZ;
 	}
-
+	public void antiGravityOn(){
+		if (isAntiGravityOn) 
+			isAntiGravityOn = false;
+		else
+			isAntiGravityOn = true;
+	}
     bool IsTouchingGround()
     {
-        Vector3 down = Vector3.down;
+		Vector3 down;
+		if (isAntiGravityOn)
+			down = Vector3.up;
+		else
+			down = Vector3.down;
         return (Physics.Raycast(transform.position, down, distToGround)) ? true : false;
     }
 }
