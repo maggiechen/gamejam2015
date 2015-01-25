@@ -40,6 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d12ea9f20eb24003bdbc4bb3854b44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navigationText: {fileID: 13279742}
+  xPixelOffset: -175
+  yPixelOffset: -150
 --- !u!132 &13279742
 GUIText:
   m_ObjectHideFlags: 1
@@ -48,7 +51,10 @@ GUIText:
   m_GameObject: {fileID: 179742}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: PRESS ENTER TO PLAY
+  m_Text: 'Press SPACEBAR to see the tutorial
+
+
+    Press ENTER to play'
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
