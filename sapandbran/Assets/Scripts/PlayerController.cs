@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour {
 		Vector3 moveX = new Vector3 (moveAxisX, 0.0f, 0.0f);
 		Vector3 moveZ = new Vector3 (0.0f, 0.0f, moveAxisZ);
 		Vector3 test = moveX + moveZ;
-		Debug.Log (test.x);
 		return moveX + moveZ;
 	}
 
