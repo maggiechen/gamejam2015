@@ -13,6 +13,7 @@ GameObject:
   - 124: {fileID: 12408708}
   - 81: {fileID: 8108708}
   - 114: {fileID: 11408708}
+  - 45: {fileID: 4541678}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -64,6 +65,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!45 &4541678
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108708}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: a07fadb24ea940240afba3afc1a692cc, type: 2}
 --- !u!81 &8108708
 AudioListener:
   m_ObjectHideFlags: 1
