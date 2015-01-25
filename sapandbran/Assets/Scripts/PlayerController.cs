@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 	public float speed = 1;
 
+	public static int maxSpeedY = 20;
+
     // TODO-BL Will change so we only change the jump magnitude in one place
     public float jumpMagnitude = 1000;
     private float distToGround;
@@ -14,14 +16,16 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Mathf.Abs(rigidbody.velocity.y) > maxSpeedY) {
+			GameController.GameOver ();
+		}
 	}
 
 	// called at fixed time intervals
 	void FixedUpdate() {
 		//Rigidbody rigidbody = new Rigidbody ();
 		float moveAxisX = 1000 * Input.GetAxisRaw ("Horizontal");
-        float moveAxisZ = 1000 * Input.GetAxisRaw("Vertical");
+        float moveAxisZ = 1000 * Input.GetAxisRaw ("Vertical");
         float jumpForce = 0;
 		Vector3 jumpMovement = new Vector3(0.0f, 0.0f, 0.0f);
         if (Input.GetKeyDown(KeyCode.Space) && IsTouchingGround())

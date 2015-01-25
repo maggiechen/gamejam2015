@@ -7,6 +7,7 @@ public class DoorController : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
+			Debug.Log("Collide with player");
 			GameController.EndGame();
 		}
 	}

@@ -7,10 +7,10 @@ public class GravityChanger : MonoBehaviour {
 	//public Vector3 moveDirection;
 
 	//private bool isMovingBack = false;
-	private Vector3 originalPosition;
+	//private Vector3 originalPosition;
 	// Use this for initialization
 	void Start () {
-		originalPosition = currentPlatform.transform.position;
+		//originalPosition = currentPlatform.transform.position;
 	}
 	
 	// Update is called once per frame
