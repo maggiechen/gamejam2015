@@ -69,4 +69,7 @@ public class PlayerController : MonoBehaviour {
 			down = Vector3.down;
         return (Physics.Raycast(transform.position, down, distToGround)) ? true : false;
     }
+	public void rotatePlayer(){
+		transform.RotateAround (transform.position, transform.right, 180f);
+	}
 }
