@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// called at fixed time intervals
-	void FixedUpdate () {
+	void FixedUpdate() {
+		//Rigidbody rigidbody = new Rigidbody ();
 		float moveAxisX = inputMultiplier * Input.GetAxisRaw ("Horizontal");
 		float moveAxisZ = inputMultiplier * Input.GetAxisRaw ("Vertical");
 
@@ -36,12 +37,12 @@ public class PlayerController : MonoBehaviour {
 
         float jumpForce = 0;
 		Vector3 jumpMovement = new Vector3(0.0f, 0.0f, 0.0f);
-        if (Input.GetKeyDown(KeyCode.Space) && IsTouchingGround()) {
-			jumpForce = 100;
+        if (Input.GetKeyDown(KeyCode.Space) && IsTouchingGround())
+        {
 			if (isAntiGravityOn){
-				jumpForce = -jumpMagnitude;
+				jumpForce = -100f;
 			}else{
-				jumpForce = jumpMagnitude;
+				jumpForce = 100;
 			}
 		}
 		jumpMovement.Set(0.0f, jumpForce, 0.0f);
@@ -50,12 +51,22 @@ public class PlayerController : MonoBehaviour {
         rigidbody.AddForce (jumpMovement * jumpMagnitude * Time.deltaTime);
 	}
 
-	Vector3 VectorMovement(float moveAxisX, float moveAxisZ) {
+	Vector3 VectorMovement(float moveAxisX, float moveAxisZ){
 		return new Vector3 (moveAxisX, 0.0f, 0.0f) + new Vector3 (0.0f, 0.0f, moveAxisZ);
 	}
-
-    bool IsTouchingGround() {
-        Vector3 down = Vector3.down;
+	public void antiGravityOn(){
+		if (isAntiGravityOn) 
+			isAntiGravityOn = false;
+		else
+			isAntiGravityOn = true;
+	}
+    bool IsTouchingGround()
+    {
+		Vector3 down;
+		if (isAntiGravityOn)
+			down = Vector3.up;
+		else
+			down = Vector3.down;
         return (Physics.Raycast(transform.position, down, distToGround)) ? true : false;
     }
 }
