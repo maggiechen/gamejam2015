@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	private int friction = 3;
     private float distToGround;
     private bool isAntiGravityOn = false;
+    private int reverseDirection = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -27,9 +28,8 @@ public class PlayerController : MonoBehaviour {
 
 	// called at fixed time intervals
 	void FixedUpdate() {
-		//Rigidbody rigidbody = new Rigidbody ();
 		float moveAxisX = inputMultiplier * Input.GetAxisRaw ("Horizontal");
-		float moveAxisZ = inputMultiplier * Input.GetAxisRaw ("Vertical");
+		float moveAxisZ = inputMultiplier * Input.GetAxisRaw ("Vertical") * reverseDirection;
 
 		if (moveAxisX == 0 && moveAxisZ == 0 && rigidbody.velocity != Vector3.zero) {
 			rigidbody.drag = friction;
@@ -40,9 +40,9 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && IsTouchingGround())
         {
 			if (isAntiGravityOn){
-				jumpForce = -100f;
+				jumpForce = -jumpMagnitude;
 			}else{
-				jumpForce = 100;
+				jumpForce = jumpMagnitude;
 			}
 		}
 		jumpMovement.Set(0.0f, jumpForce, 0.0f);
@@ -55,10 +55,13 @@ public class PlayerController : MonoBehaviour {
 		return new Vector3 (moveAxisX, 0.0f, 0.0f) + new Vector3 (0.0f, 0.0f, moveAxisZ);
 	}
 	public void antiGravityOn(){
-		if (isAntiGravityOn) 
+		if (isAntiGravityOn) {
 			isAntiGravityOn = false;
-		else
+			reverseDirection = 1;
+		}else {
 			isAntiGravityOn = true;
+			reverseDirection = -1;
+		}
 	}
     bool IsTouchingGround()
     {
