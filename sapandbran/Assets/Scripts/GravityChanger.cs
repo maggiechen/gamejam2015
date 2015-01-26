@@ -12,7 +12,7 @@ public class GravityChanger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		cameraController = GameObject.Find ("Camera").GetComponent<CameraController> ();
+		cameraController = GameObject.Find ("Main Camera").GetComponent<CameraController> ();
 		playerController = GameObject.Find ("Player").GetComponent<PlayerController> ();
 		originalPosition = currentPlatform.transform.position;
 	}

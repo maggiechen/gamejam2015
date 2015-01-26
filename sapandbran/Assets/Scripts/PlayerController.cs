@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 	private float jumpMagnitude = 150;
 	private int friction = 3;
     private float distToGround;
-	private float fallHeightDeath = 8.0f;
+	private float fallHeightDeath = 20.0f;
     private bool isAntiGravityOn = false;
     private int reverseDirection = 1;
 
