@@ -11,7 +11,3 @@
 5. Patterson Wu
 6. Maggie Chen
 7. Brandon Lim
-
-## Saooo prettty 
-
-![Imgur](http://i.imgur.com/RlL5j5M.jpg)
